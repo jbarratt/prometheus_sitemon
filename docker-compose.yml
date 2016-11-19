@@ -10,7 +10,7 @@ services:
       - alertmanager
     volumes:
       - "./config:/config"
-      - "./data:/data"
+      - "./data/prometheus:/data"
     command: -config.file=/config/prometheus.yml -storage.local.path=/data -storage.local.retention=5000h -alertmanager.url=http://alertmanager:9093
   blackbox_exporter:
     image: prom/blackbox-exporter
@@ -31,7 +31,7 @@ services:
     ports:
       - "9093:9093"
     volumes:
-      - "./data:/data"
+      - "./data/alertmanager:/data"
       - "./config:/config"
     command: -config.file=/config/alertmanager.yml -storage.path=/data
   alertlogger:
@@ -42,4 +42,4 @@ services:
     environment:
       - LOG_ALERT_PATH=/data/alerts.log
     volumes:
-      - "./data:/data"
+      - "./data/alertlogger:/data"

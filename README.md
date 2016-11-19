@@ -13,26 +13,22 @@ This example runs 4 small docker containers, using docker-compose to wire them t
 
 Normally Alertmanager would be publishing alerts to something like Opsgenie, Slack, etc, but for now we can just keep an eye on what they're doing by sending them to a file via the alertlogger.
 
-To get going make sure you have [docker-compose](https://docs.docker.com/compose/) (and docker) installed and run
+First, edit the `config/blackbox_target.yml` file and add the domains you want to start probing.
 
-      # Create the data folder for storing prometheus's ephemeral information
+Then, make sure you have [docker-compose](https://docs.docker.com/compose/) (and docker) installed and run
 
-    $ mkdir data
-
-      # edit the blackbox_targets.yml file to configure the sites you need, some defaults (including a non-existent site) have been provided.
-
-      # This builds the tiny python webserver container that logs alert data
+    >>> This builds the tiny golang container that logs alert data
     $ docker-compose build
 
-      # start all the containers
+    >>> start all the containers. Run without the `-d` if you want to see container logs.
     $ docker-compose up -d
 
-      # keep an eye on the logs coming out over the alertmanager
-    $ tail -f data/alerts.log
+    >>> keep an eye on the logs coming out over the alertmanager
+    $ tail -f data/alertlogger/alerts.log
 
 Then go to http://localhost:9090/alerts in your browser to see what, if any hosts are alerting.
 
-You can also see the other metrics that are tracked. 
+You can also see the other metrics that are tracked.
 
 * Go to http://localhost:9090/graph
 * Type `probe_` then another name (`probe_duration_seconds` is an interesting one to see performance over time.)

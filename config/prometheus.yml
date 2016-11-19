@@ -1,5 +1,6 @@
 global:
   evaluation_interval: 30s
+  scrape_interval: 1m
 
 rule_files:
   - "/config/prometheus.rules"
