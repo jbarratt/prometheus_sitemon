@@ -38,7 +38,7 @@ services:
     build: alertlogger
     restart: always
     ports:
-      - "9095:80"
+      - "8080:8080"
     environment:
       - LOG_ALERT_PATH=/data/alerts.log
     volumes:
