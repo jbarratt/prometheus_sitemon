@@ -35,10 +35,11 @@ Then go to http://localhost:9090/alerts in your browser to see what, if any host
     2016/11/19 15:30:57 {"receiver":"default-receiver","status":"resolved","alerts":[{"status":"resolved","labels":{"alertname":"SiteDown","instance":"flakyhost.com","job":"blackbox"},"annotations":{"description":"site down: flakyhost.com","summary":"site down: flakyhost.com"},"startsAt":"2016-11-19T15:28:27.818Z","endsAt":"2016-11-19T15:29:27.818Z","generatorURL":"http://b873f429a190:9090/graph?g0.expr=probe_success+%3C+1\u0026g0.tab=0"}],"groupLabels":{"alertname":"SiteDown"},"commonLabels":{"alertname":"SiteDown","instance":"flakyhost.com","job":"blackbox"},"commonAnnotations":{"description":"site down: flakyhost.com","summary":"site down: flakyhost.com"},"externalURL":"http://438350b8d0ba:9093","version":"3","groupKey":15335440397915075285}
     2016/11/19 15:30:57 site down: flakyhost.com
     2016/11/19 15:30:57 Status: resolved
-    
+
 
     2016/11/19 15:31:57 Request from 172.18.0.6:54216: POST /
-    2016/11/19 15:31:57 {"receiver":"default-receiver","status":"firing","alerts":[{"status":"firing","labels":{"alertname":"SiteDown","instance":"flakyhost.com","job":"blackbox"},"annotations":{"description":"site down: flakyhost.com","summary":"site down: flakyhost.com"},"startsAt":"2016-11-19T15:31:27.818Z","endsAt":"0001-01-01T00:00:00Z","generatorURL":"http://b873f429a190:9090/graph?g0.expr=probe_success+%3C+1\u0026g0.tab=0"}],"groupLabels":{"alertname":"SiteDown"},"commonLabels":{"alertname":"SiteDown","instance":"flakyhost.com","job":"blackbox"},"commonAnnotations":{"description":"site down: flakyhost.com","summary":"site down: flakyhost.com"},"externalURL":"http://438350b8d0ba:9093","version":"3","groupKey":15335440397915075285} 2016/11/19 15:31:57 site down: flakyhost.com
+    2016/11/19 15:31:57 {"receiver":"default-receiver","status":"firing","alerts":[{"status":"firing","labels":{"alertname":"SiteDown","instance":"flakyhost.com","job":"blackbox"},"annotations":{"description":"site down: flakyhost.com","summary":"site down: flakyhost.com"},"startsAt":"2016-11-19T15:31:27.818Z","endsAt":"0001-01-01T00:00:00Z","generatorURL":"http://b873f429a190:9090/graph?g0.expr=probe_success+%3C+1\u0026g0.tab=0"}],"groupLabels":{"alertname":"SiteDown"},"commonLabels":{"alertname":"SiteDown","instance":"flakyhost.com","job":"blackbox"},"commonAnnotations":{"description":"site down: flakyhost.com","summary":"site down: flakyhost.com"},"externalURL":"http://438350b8d0ba:9093","version":"3","groupKey":15335440397915075285}
+    2016/11/19 15:31:57 site down: flakyhost.com
     2016/11/19 15:31:57 Status: firing
 
 
