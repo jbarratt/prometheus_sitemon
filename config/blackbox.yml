@@ -1,0 +1,7 @@
+modules:
+  http_2xx:
+    prober: http
+    timeout: 5s
+    http:
+      valid_status_codes: [] #default to 2xx
+      method: GET

@@ -1,0 +1,9 @@
+global:
+  resolve_timeout: 5m
+route:
+  receiver: 'default-receiver'
+receivers:
+  - name: 'default-receiver'
+    webhook_configs:
+      - send_resolved: true
+        url: http://alertlogger:80/
