@@ -34,11 +34,25 @@ services:
       - "./data/alertmanager:/data"
       - "./config:/config"
     command: -config.file=/config/alertmanager.yml -storage.path=/data
+  flakyhost.com:
+    environment:
+      - HITS_FAIL_COUNT=10
+    build: flakyhost
+    restart: always
+    ports:
+      - "9567:80"
+  reliablehost.com:
+    environment:
+      - HITS_FAIL_COUNT=0
+    build: flakyhost
+    restart: always
+    ports:
+      - "9568:80"
   alertlogger:
     build: alertlogger
     restart: always
     ports:
-      - "8080:8080"
+      - "9566:8088"
     environment:
       - LOG_ALERT_PATH=/data/alerts.log
     volumes:

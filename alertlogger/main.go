@@ -3,24 +3,35 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Request from %s: %s %s", r.RemoteAddr, r.Method, r.URL.String())
 	var page AlertManagerData
 	if r.Body == nil {
 		http.Error(w, "Please send a request body", 400)
 		return
 	}
-	err := json.NewDecoder(r.Body).Decode(&page)
+	bodyText, err := ioutil.ReadAll(r.Body)
+	if err == nil {
+		log.Printf("%s\n", bodyText)
+	} else {
+		log.Println("Error reading body")
+		return
+	}
+	err = json.Unmarshal(bodyText, &page)
 	if err != nil {
 		http.Error(w, err.Error(), 400)
+		log.Printf("JSON Decode Error: %v\n", err.Error())
 		return
 	}
 	if len(page.Alerts) == 0 {
 		http.Error(w, "No alerts to display", 400)
+		log.Println("No alerts to display")
 		return
 	}
 	log.Println(page.Alerts[0].Annotations.Description)
@@ -41,5 +52,5 @@ func main() {
 	}
 
 	http.HandleFunc("/", handler)
-	log.Fatal(http.ListenAndServe("0.0.0.0:8080", nil))
+	log.Fatal(http.ListenAndServe("0.0.0.0:8088", nil))
 }

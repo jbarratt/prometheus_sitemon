@@ -6,4 +6,4 @@ receivers:
   - name: 'default-receiver'
     webhook_configs:
       - send_resolved: true
-        url: http://alertlogger:8080/
+        url: http://alertlogger:8088/
