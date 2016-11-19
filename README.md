@@ -9,7 +9,7 @@ This example runs 4 small docker containers, using docker-compose to wire them t
 * The **prometheus engine** itself: Manages the state of all monitorables (in this case, the list of domains we care about monitoring)
 * A process called **blackbox-exporter** which prometheus polls to actually execute the health checks
 * An **Alertmanager**, which handles sending and managing state for alerts.
-* A small dummy flask app (**alertlogger**) which just gets anything posted to it and logs it to a file, so we can see what would be alerted upon.
+* A small golang app (**alertlogger**) which just gets anything posted to it and logs it to a file, so we can see what would be alerted upon.
 
 Normally Alertmanager would be publishing alerts to something like Opsgenie, Slack, etc, but for now we can just keep an eye on what they're doing by sending them to a file via the alertlogger.
 
