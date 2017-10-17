@@ -11,7 +11,7 @@ services:
     volumes:
       - "./config:/config"
       - "./data/prometheus:/data"
-    command: -config.file=/config/prometheus.yml -storage.local.path=/data -storage.local.retention=5000h -alertmanager.url=http://alertmanager:9093
+    command: --config.file=/config/prometheus.yml --storage.local.path=/data --storage.local.retention=5000h --alertmanager.url=http://alertmanager:9093
   blackbox_exporter:
     image: prom/blackbox-exporter
     ports:
@@ -22,7 +22,7 @@ services:
       - "9115:9115"
     volumes:
       - "./config:/config"
-    command: -config.file=/config/blackbox.yml
+    command: --config.file=/config/blackbox.yml
   alertmanager:
     image: prom/alertmanager
     restart: always
@@ -33,7 +33,7 @@ services:
     volumes:
       - "./data/alertmanager:/data"
       - "./config:/config"
-    command: -config.file=/config/alertmanager.yml -storage.path=/data
+    command: --config.file=/config/alertmanager.yml --storage.path=/data
   flakyhost.com:
     environment:
       - HITS_FAIL_COUNT=10
