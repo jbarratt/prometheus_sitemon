@@ -3,7 +3,7 @@ global:
   scrape_interval: 15s
 
 rule_files:
-  - "/config/prometheus.rules"
+  - "/config/prometheus.rules.yml"
 
 scrape_configs:
   - job_name: prometheus
@@ -27,3 +27,9 @@ scrape_configs:
         regex: .*
         target_label: __address__
         replacement: blackbox_exporter:9115
+
+alerting:
+  alertmanagers:
+    - scheme: http
+      static_configs:
+        - targets: ['alertmanager:9093']

@@ -1,0 +1,9 @@
+groups:
+- name: prometheus.rules
+  rules:
+  - alert: SiteDown
+    expr: probe_success < 1
+    for: 30s
+    annotations:
+      description: 'site down: {{$labels.instance}}'
+      summary: 'site down: {{$labels.instance}}'
