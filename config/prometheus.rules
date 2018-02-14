@@ -1,7 +1,0 @@
-ALERT SiteDown
-  IF probe_success < 1
-  FOR 30s
-  ANNOTATIONS {
-    summary="site down: {{$labels.instance}}",
-    description="site down: {{$labels.instance}}"
-  }
